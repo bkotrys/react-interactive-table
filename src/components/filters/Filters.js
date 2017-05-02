@@ -3,7 +3,7 @@ import MultipleChoiceFilters from './multipleChoiceFilters/Filters';
 import SortFilter from './sortFilter/Filter';
 import Paper from 'material-ui/Paper';
 
-const Filters = ({filters, onFilter, onSort}) => { 
+const Filters = ({filters, onFilter, onSort, sortedOptions, sortedBy}) => { 
   const styles = {
     margin: 10,
     padding: 10
@@ -22,7 +22,9 @@ const Filters = ({filters, onFilter, onSort}) => {
       />
       <SortFilter
         label="Sort By:"
+        value={ sortedBy }
         onSort={ onSort }
+        options={ sortedOptions }
       />
     </Paper>
   ) 

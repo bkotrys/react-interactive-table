@@ -8,24 +8,20 @@ import {
   TableHeaderColumn,
 } from 'material-ui/Table';
 
-class CustomTable extends React.Component {
-  render() { 
-    return (
-      <Table>
-        <TableHeader>
-          <HeadRow columnsNames={ this.props.columnsNames }/>
-        </TableHeader>
-        <TableBody>   
-        {
-          this.props.pets.map((pet, idx) => (
-            <BodyRow key={ idx } pet={ pet }/>
-          ))
-        }
-        </TableBody>
-      </Table>
-    ) 
-  };
-}
+const CustomTable = ({pets, columnsNames}) => (
+  <Table>
+    <TableHeader>
+      <HeadRow columnsNames={ columnsNames }/>
+    </TableHeader>
+    <TableBody>   
+    {
+      pets.map((pet, idx) => (
+        <BodyRow key={ idx } pet={ pet }/>
+      ))
+    }
+    </TableBody>
+  </Table>
+);
 
 export default CustomTable
 

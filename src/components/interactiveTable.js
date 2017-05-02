@@ -8,7 +8,8 @@ class InteractiveTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filters: {}
+      filters: {},
+      sortedBy: ""
     }
     this.filterPets = this.filterPets.bind(this);
     this.sortBy = this.sortBy.bind(this);
@@ -23,14 +24,22 @@ class InteractiveTable extends React.Component {
         return map;
     }, {});
   }
-  getVisiblePets() {
-    return this.props.pets.filter((pet) => {
-      return this.state.filters[pet.animal]
-    })
+  getVisiblePets(pets) {
+    return pets.filter((pet) => {
+      return this.state.filters[pet.animal];
+    });
+  }
+  getSortedPets(pets) {
+    const sortedBy = this.state.sortedBy;
+    return pets.sort((a, b) => a[sortedBy] - b[sortedBy]);
+  }
+  getPets() {
+    return this.getVisiblePets(this.getSortedPets(this.props.pets));
   }
   componentDidMount() {
     this.setState({
-      filters: this.getInitialFiltersState()
+      filters: this.getInitialFiltersState(),
+      sortedBy: null
     })
   }
   filterPets(filterName, isChecked) {
@@ -42,8 +51,8 @@ class InteractiveTable extends React.Component {
       )
     })
   }
-  sortBy(filter) {
-    debugger;
+  sortBy(filterName) {
+    this.setState({ sortedBy: filterName })
   }
   render() { 
     return (
@@ -52,9 +61,11 @@ class InteractiveTable extends React.Component {
           filters={ this.state.filters }
           onFilter={ this.filterPets }
           onSort={ this.sortBy }
+          sortedOptions={ ["rating", "price"] }
+          sortedBy={ this.state.sortedBy }
         />
         <Table 
-          pets={ this.getVisiblePets() } 
+          pets={ this.getPets() } 
           columnsNames={ this.getColumnsNames() }
         />
       </div>

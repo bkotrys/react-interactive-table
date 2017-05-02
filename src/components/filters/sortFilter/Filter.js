@@ -1,23 +1,28 @@
 import React from 'react';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
-class SortFilter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onSelect = this.onSelect.bind(this);
-  }
-  onSelect(e) {
-    debugger;
-    this.props.onSort();
-  }
-  render() {
-    let filters = this.props.filters;
+const SortFilter = ({ value, options, onSort }) => {
+  const onSelect = (event, index, value) => onSort(value);
 
-    return (
-      <div className="multiple-choice-filters">
-        <h3>{ this.props.label }</h3>
-      </div>
-    )
-  }
+  return (
+    <SelectField
+      value={ value } 
+      onChange={ onSelect }
+      floatingLabelText="Sort by"
+      floatingLabelFixed={ true }
+    >
+      {
+        options.map((option, idx) => (
+            <MenuItem 
+              key={ idx + 1 } 
+              value={ option } 
+              primaryText={option} 
+            />
+        ))
+      }
+    </SelectField>
+  )
 }
 
 export default SortFilter;
