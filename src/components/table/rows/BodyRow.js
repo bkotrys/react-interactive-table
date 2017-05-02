@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PetRow = ({ pet }) => (
+const BodyRow = ({ pet }) => (
     <tr>
         {
             Object.keys(pet).map((info, idx) => (
@@ -10,4 +10,4 @@ const PetRow = ({ pet }) => (
     </tr>
 );
 
-export default PetRow;
+export default BodyRow;

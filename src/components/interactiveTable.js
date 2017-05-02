@@ -1,9 +1,8 @@
 import React from 'react';
 import { petService } from './../service';
-import mockPets from './../mocks';
-import Table from './table'
+import Table from './table/Table' 
 import MockPets from './../mocks';
-import Filters from './Filters';
+import Filters from './filters/Filters';
 
 class InteractiveTable extends React.Component {
   constructor(props) {
@@ -11,7 +10,8 @@ class InteractiveTable extends React.Component {
     this.state = {
       filters: {}
     }
-    this.filterPets = this.filterPets.bind(this)
+    this.filterPets = this.filterPets.bind(this);
+    this.sortBy = this.sortBy.bind(this);
   }
   getColumnsNames() {
     const pets = this.props.pets;
@@ -25,8 +25,12 @@ class InteractiveTable extends React.Component {
   }
   getVisiblePets() {
     return this.props.pets.filter((pet) => {
-      debugger;
       return this.state.filters[pet.animal]
+    })
+  }
+  componentDidMount() {
+    this.setState({
+      filters: this.getInitialFiltersState()
     })
   }
   filterPets(filterName, isChecked) {
@@ -38,21 +42,20 @@ class InteractiveTable extends React.Component {
       )
     })
   }
-  componentDidMount() {
-    this.setState({
-      filters: this.getInitialFiltersState()
-    })
+  sortBy(filter) {
+    debugger;
   }
   render() { 
     return (
       <div>
-        <Table 
-          pets={ this.getVisiblePets() } 
-          columnsNames={ this.getColumnsNames() }
-        />
         <Filters
           filters={ this.state.filters }
           onFilter={ this.filterPets }
+          onSort={ this.sortBy }
+        />
+        <Table 
+          pets={ this.getVisiblePets() } 
+          columnsNames={ this.getColumnsNames() }
         />
       </div>
     ) 

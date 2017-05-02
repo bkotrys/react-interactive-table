@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InteractiveTable from './components/interactiveTable';
+import InteractiveTable from './components/InteractiveTable';
 import MockPets from './mocks';
 
 ReactDOM.render(
