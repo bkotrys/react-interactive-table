@@ -6,8 +6,6 @@ import {
   TableBody,
   TableHeader,
   TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
 } from 'material-ui/Table';
 
 class CustomTable extends React.Component {

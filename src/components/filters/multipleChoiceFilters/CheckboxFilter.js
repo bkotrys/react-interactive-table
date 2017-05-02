@@ -1,19 +1,22 @@
 import React from 'react';
+import Checkbox from 'material-ui/Checkbox';
 
 const CheckboxFilter = ({ checked, name, onFilterChange }) => {
   const onChange = (e) => {
     onFilterChange(name, e.target.checked);
   };
 
+  const styles = {
+      marginBottom: 16,
+  };
+
   return (
-    <label >
-      <input 
-        type="checkbox" 
+      <Checkbox
+        label={ name }
         defaultChecked={ checked }
-        onChange={ onChange }
-      />  
-      { name }
-    </label>      
+        style={ styles }
+        onCheck={ onChange }
+      />
   )
 }
 
