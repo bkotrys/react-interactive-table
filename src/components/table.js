@@ -5,15 +5,11 @@ import HeadRow from './row/headRow';
 import PetRow from './row/petRow';
 
 class Table extends React.Component {
-	getColumnNames() {
-		const rowData = this.props.pets[0];
-		return Object.keys(rowData);
-	}
 	render() { 
 		return (
 			<table>
 				<thead>
-					<HeadRow columnNames={ this.getColumnNames() }/>
+					<HeadRow columnsNames={ this.props.columnsNames }/>
 				</thead>
 				<tbody>		
 				{

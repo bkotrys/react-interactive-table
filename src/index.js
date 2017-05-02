@@ -4,6 +4,6 @@ import InteractiveTable from './components/interactiveTable';
 import MockPets from './mocks';
 
 ReactDOM.render(
-  <InteractiveTable pets = { MockPets } />,
+  <InteractiveTable pets={ MockPets }/>,
   document.getElementById('root')
 );

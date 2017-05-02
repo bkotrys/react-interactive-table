@@ -1,9 +1,9 @@
 import React from 'react';
 
-const HeadRow = ({ columnNames }) => (
+const HeadRow = ({ columnsNames }) => (
 	<tr>
 		{
-			columnNames.map((name, idx) => (
+			columnsNames.map((name, idx) => (
 				<th key={idx}> {name} </th>)
 			)
 		}
