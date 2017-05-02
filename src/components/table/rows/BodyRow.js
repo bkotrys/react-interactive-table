@@ -1,13 +1,17 @@
 import React from 'react';
+import {
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 const BodyRow = ({ pet }) => (
-    <tr>
-        {
-            Object.keys(pet).map((info, idx) => (
-                <td key={idx}>{ pet[info] }</td>
-            ))
-        }
-    </tr>
+	<TableRow>
+	    {
+	        Object.keys(pet).map((info, idx) => (
+	            <TableRowColumn key={idx}>{ pet[info] }</TableRowColumn>
+	        ))
+	    }
+	</TableRow>
 );
 
 export default BodyRow;

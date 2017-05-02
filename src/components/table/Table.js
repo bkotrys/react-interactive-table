@@ -1,25 +1,33 @@
 import React from 'react';
 import HeadRow from './rows/HeadRow';
 import BodyRow from './rows/BodyRow';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
-class Table extends React.Component {
+class CustomTable extends React.Component {
   render() { 
     return (
-      <table>
-        <thead>
+      <Table>
+        <TableHeader>
           <HeadRow columnsNames={ this.props.columnsNames }/>
-        </thead>
-        <tbody>   
+        </TableHeader>
+        <TableBody>   
         {
           this.props.pets.map((pet, idx) => (
             <BodyRow key={ idx } pet={ pet }/>
           ))
         }
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     ) 
   };
 }
 
-export default Table
+export default CustomTable
 

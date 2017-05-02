@@ -1,13 +1,17 @@
 import React from 'react';
+import {
+  TableRow,
+	TableHeaderColumn,
+} from 'material-ui/Table';
 
 const HeadRow = ({ columnsNames }) => (
-  <tr>
+  <TableRow>
     {
       columnsNames.map((name, idx) => (
-        <th key={idx}> {name} </th>)
+        <TableHeaderColumn key={idx}> {name} </TableHeaderColumn>)
       )
     }
-  </tr>
+  </TableRow>
 );
 
 export default HeadRow;
