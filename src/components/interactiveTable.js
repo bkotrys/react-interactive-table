@@ -30,16 +30,17 @@ class InteractiveTable extends React.Component {
     });
   }
   getSortedPets(pets) {
-    const sortedBy = this.state.sortedBy;
-    return pets.sort((a, b) => a[sortedBy] - b[sortedBy]);
+    const isAscending = this.state.sortedBy.endsWith("+"); 
+    const sortedBy = this.state.sortedBy.slice(0, -1);
+    return pets.sort((a, b) => isAscending ?
+      (a[sortedBy] - b[sortedBy]) : (b[sortedBy] - a[sortedBy]));
   }
   getPets() {
     return this.getVisiblePets(this.getSortedPets(this.props.pets));
   }
   componentDidMount() {
     this.setState({
-      filters: this.getInitialFiltersState(),
-      sortedBy: null
+      filters: this.getInitialFiltersState()    
     })
   }
   filterPets(filterName, isChecked) {
