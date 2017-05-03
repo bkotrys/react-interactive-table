@@ -9,9 +9,11 @@ class InteractiveTable extends React.Component {
     super(props);
     this.state = {
       filters: {},
-      sortedBy: ""
+      sortedBy: "",
+      maxPrice: 0
     }
-    this.filterPets = this.filterPets.bind(this);
+    this.filterByAnimalType = this.filterByAnimalType.bind(this);
+    this.filterByPrice = this.filterByPrice.bind(this);
     this.sortBy = this.sortBy.bind(this);
   }
   getColumnsNames() {
@@ -25,9 +27,7 @@ class InteractiveTable extends React.Component {
     }, {});
   }
   getVisiblePets(pets) {
-    return pets.filter((pet) => {
-      return this.state.filters[pet.animal];
-    });
+    return pets.filter((pet) => this.state.filters[pet.animal]);
   }
   getSortedPets(pets) {
     const isAscending = this.state.sortedBy.endsWith("+"); 
@@ -35,22 +35,33 @@ class InteractiveTable extends React.Component {
     return pets.sort((a, b) => isAscending ?
       (a[sortedBy] - b[sortedBy]) : (b[sortedBy] - a[sortedBy]));
   }
-  getPets() {
-    return this.getVisiblePets(this.getSortedPets(this.props.pets));
+  getPetsIncludedInPrice(pets) {
+    return pets.filter((pet) => pet.price <= this.state.price);
+  }
+  getPets() { 
+    return this.getPetsIncludedInPrice(
+            this.getSortedPets(
+              this.getVisiblePets(
+                this.props.pets
+                )
+              )
+            );
   }
   componentDidMount() {
     this.setState({
-      filters: this.getInitialFiltersState()    
+      filters: this.getInitialFiltersState(),
+      price: 1000 // should be get from service    
     })
   }
-  filterPets(filterName, isChecked) {
+  filterByAnimalType(filterName, isChecked) {
     this.setState({
       filters: Object.assign(
-      {}, 
-      this.state.filters, 
-      { [filterName]: isChecked }
+        {}, this.state.filters, { [filterName]: isChecked }
       )
     })
+  }
+  filterByPrice(currentPrice) {
+    this.setState({ price: currentPrice })
   }
   sortBy(filterName) {
     this.setState({ sortedBy: filterName })
@@ -60,10 +71,12 @@ class InteractiveTable extends React.Component {
       <div>
         <Filters
           filters={ this.state.filters }
-          onFilter={ this.filterPets }
+          onFilter={ this.filterByAnimalType }
           onSort={ this.sortBy }
           sortedOptions={ ["rating", "price"] }
           sortedBy={ this.state.sortedBy }
+          onPriceFilter={ this.filterByPrice }
+          price={ this.state.price }
         />
         <Table 
           pets={ this.getPets() } 
