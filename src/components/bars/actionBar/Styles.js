@@ -1,5 +1,7 @@
 const styles = {
-  marginTop: 15,
-};
+	actionBtn: {
+		fontSize: 20 
+	}
+}
 
 export default styles;

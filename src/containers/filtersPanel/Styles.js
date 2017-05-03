@@ -1,6 +1,6 @@
 const styles = {
   paper: {
-    padding: "25px 25px 0",
+    padding: "25px 25px 20px",
     display: "flex"
   },
   rightFilters: {
