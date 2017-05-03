@@ -8,7 +8,7 @@ const HeadRow = ({ columnsNames }) => (
   <TableRow>
     {
       columnsNames.map((name, idx) => (
-        <TableHeaderColumn key={idx}> {name} </TableHeaderColumn>)
+        <TableHeaderColumn key={idx}> { name.toUpperCase() } </TableHeaderColumn>)
       )
     }
   </TableRow>
