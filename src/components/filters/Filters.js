@@ -13,18 +13,26 @@ class Filters extends React.Component {
       expanded: false
     }
     this.handleExpandChange = this.handleExpandChange.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
   handleExpandChange(expanded) {
-    debugger;
     this.setState({ expanded: expanded });
   }
-  handleToggle = (event, toggle) => {
+  handleToggle(event, toggle) {
     this.setState({ expanded: toggle });
-  };
+  }
   render() {
     const styles = {
-      margin: 10,
-      padding: 10
+      paper: {
+        padding: "5px 25px",
+        display: "flex"
+      },
+      rightFilters: {
+        display: "flex",
+        flex: "1 1 auto",
+        marginLeft: 25,
+        flexDirection: "column"
+      }
     };
 
     return (
@@ -38,25 +46,27 @@ class Filters extends React.Component {
           />
         </CardText>
         <CardActions expandable={ true }>
-          <Paper zDepth={2} style={ styles } className="filters-wrapper">
+          <Paper zDepth={2} style={ styles.paper } className="filters-wrapper">
               <MultipleChoiceFilters
-                label="Show pets by animal type:"
+                label="Animals:"
                 filters={ this.props.filters }
                 onFilter={ this.props.onFilter }
               />
-              <SliderFilter 
-                label="Price"
-                minRange={ 0 }
-                maxRange={ 1000 }
-                onChange={ this.props.onPriceFilter }
-                value={ this.props.price }
-              />
-              <SortFilter
-                label="Sort By:"
-                value={ this.props.sortedBy }
-                onSort={ this.props.onSort }
-                options={ this.props.sortedOptions }
-              />
+              <section style={ styles.rightFilters }>
+                <SliderFilter 
+                  label="Price:"
+                  minRange={ 0 }
+                  maxRange={ 1000 }
+                  onChange={ this.props.onPriceFilter }
+                  value={ this.props.price }
+                />
+                <SortFilter
+                  label="Sort By:"
+                  value={ this.props.sortedBy }
+                  onSort={ this.props.onSort }
+                  options={ this.props.sortedOptions }
+                />
+              </section>
           </Paper>
         </CardActions>
       </Card>

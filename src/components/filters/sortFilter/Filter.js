@@ -25,7 +25,6 @@ class SortFilter extends React.Component {
         value={ this.state.value } 
         onChange={ this.handleChange }
         floatingLabelText="Sort by"
-        floatingLabelFixed={ true }
       >
         {
           this.props.options.map((option, idx) => (
