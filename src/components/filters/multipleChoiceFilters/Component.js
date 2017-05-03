@@ -8,7 +8,7 @@ const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
       <span>{ label }</span>
       <ul style={ styles.ul }>
         { 
-            Object.keys(filters).map((name, idx) => (
+          Object.keys(filters).map((name, idx) => (
             <Checkbox 
               key={ idx }
               name={ name } 

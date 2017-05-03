@@ -8,12 +8,12 @@ const CheckboxFilter = ({ checked, name, onChange }) => {
   };
 
   return (
-      <Checkbox
-        label={ name }
-        defaultChecked={ checked }
-        style={ styles }
-        onCheck={ handleChange }
-      />
+    <Checkbox
+      label={ name }
+      defaultChecked={ checked }
+      style={ styles }
+      onCheck={ handleChange }
+    />
   )
 }
 
