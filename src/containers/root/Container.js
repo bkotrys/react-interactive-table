@@ -49,11 +49,12 @@ class Root extends React.Component {
 	render() {
 		const showLoader = this.state.showLoader;
 		const isError = !!this.state.errorMsg.length;
+		
 		return (
 			<MuiThemeProvider muiTheme={ getMuiTheme(darkBaseTheme) }>
 				<div style={ styles.root }>
 				  <ActionBar 
-				  	title="Pets report" 
+				  	title="Pets summary" 
 				  	actionIcon="refresh"
 				  	actionTooltipText="Reload data"
 				  	onChange={ this.onRefresh }

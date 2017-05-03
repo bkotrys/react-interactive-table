@@ -7,8 +7,8 @@ const SliderFilter = ({ minRange, maxRange, step=1, onChange, value, label }) =>
   
   return (
     <div>
-      <span>{ label }</span>
-      <span className="current-value">{ value }</span>
+      <label style={ styles.sliderLabel }>{ label }</label>
+      <span style={ styles.currentValue }>{ value }</span>
       <section className="slider-wrapper" style={ styles.sliderWrapper }>
         <span>{ minRange }</span>
         <Slider
