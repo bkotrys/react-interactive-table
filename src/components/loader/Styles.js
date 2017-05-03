@@ -2,7 +2,8 @@ const styles = {
 	wrapper: {
 		display: "flex",
 		margin: 20,
-		alignItems: "center"
+		alignItems: "center",
+		fontSize: 20
 	},
 	label: {
 		marginRight: 20

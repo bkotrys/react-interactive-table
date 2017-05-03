@@ -1,12 +1,12 @@
 const styles = {
   paper: {
-    padding: "25px 25px 20px",
+    padding: "20px 15px 10px",
     display: "flex"
   },
   rightFilters: {
     display: "flex",
     flex: "1 1 auto",
-    marginLeft: 25,
+    marginLeft: 50,
     flexDirection: "column"
   },
   cardActions: {

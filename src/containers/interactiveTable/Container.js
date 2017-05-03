@@ -3,6 +3,7 @@ import { petService } from './../../service';
 import Table from './../../components/tables/custom/Component' ;
 import MockPets from './../../mocks';
 import Filters from './../filtersPanel/Container';
+import styles from './Styles';
 
 class InteractiveTable extends React.Component {
   constructor(props) {
@@ -86,7 +87,11 @@ class InteractiveTable extends React.Component {
             />
           </div>)
         :
-          (<span>There are no data</span>)
+          (
+            <p style={ styles.noData }>
+              There are no data. Reload data!
+            </p>
+          )
         }
       </section>
     ) 

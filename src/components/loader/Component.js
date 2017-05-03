@@ -9,7 +9,7 @@ const Loader = ({ label="" }) => (
 				<span style={ styles.label }>{ label }</span>
 			)
 		}
-		<Icon spin size="2x" name="spinner" />
+		<Icon spin size="lg" name="spinner" />
 	</div>
 )
 

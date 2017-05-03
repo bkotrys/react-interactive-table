@@ -9,8 +9,8 @@ const ActionBar = ({
 	title, 
 	actionIcon,
 	actionTooltipText, 
-	actionTooltipPosition = "bottom-right",
-	isTouch = true,
+	actionTooltipPosition = "top-center",
+	isTouch = false,
 	onChange
 }) => (
   <AppBar 

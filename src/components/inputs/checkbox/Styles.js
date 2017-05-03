@@ -1,5 +1,5 @@
 const styles = {
-  marginTop: 15,
+  marginTop: 7,
 };
 
 export default styles;

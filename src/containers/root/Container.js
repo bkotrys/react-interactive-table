@@ -4,6 +4,7 @@ import Loader from './../../components/loader/Component';
 import ActionBar from './../../components/bars/actionBar/Component';
 import MockPets from './../../mocks';
 import { petService } from './../../service';
+import styles from './Styles';
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -50,7 +51,7 @@ class Root extends React.Component {
 		const isError = !!this.state.errorMsg.length;
 		return (
 			<MuiThemeProvider muiTheme={ getMuiTheme(darkBaseTheme) }>
-				<div>
+				<div style={ styles.root }>
 				  <ActionBar 
 				  	title="Pets report" 
 				  	actionIcon="refresh"
@@ -62,7 +63,12 @@ class Root extends React.Component {
 								(<Loader label="Loading data" />)
 							}
 							{	isError && !showLoader &&
-								(<span>{ this.state.errorMsg }</span>)
+								(
+									<p style={ styles.errorMsg }>
+										Fetching data failed: { this.state.errorMsg }.
+										Try to reload data!
+									</p>
+								)
 							}
 							{	!isError && !showLoader && 
 								(<InteractiveTable pets={ this.state.pets } />)
