@@ -71,21 +71,23 @@ class InteractiveTable extends React.Component {
     return (
       <section>
         { this.props.pets.length ?
-          (<div>
-            <Filters
-              filters={ this.state.filters }
-              onFilter={ this.filterByAnimalType }
-              onSort={ this.sortBy }
-              sortedOptions={ ["rating", "price"] }
-              sortedBy={ this.state.sortedBy }
-              onPriceFilter={ this.filterByPrice }
-              price={ this.state.price }
-            />
-            <Table 
-              pets={ this.pets } 
-              columnsNames={ this.columnsNames }
-            />
-          </div>)
+          (
+            <div>
+              <Filters
+                filters={ this.state.filters }
+                onFilter={ this.filterByAnimalType }
+                onSort={ this.sortBy }
+                sortedOptions={ ["rating", "price"] }
+                sortedBy={ this.state.sortedBy }
+                onPriceFilter={ this.filterByPrice }
+                price={ this.state.price }
+              />
+              <Table 
+                pets={ this.pets } 
+                columnsNames={ this.columnsNames }
+              />
+            </div>
+          )
         :
           (
             <p style={ styles.noData }>

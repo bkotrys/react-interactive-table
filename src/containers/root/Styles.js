@@ -1,6 +1,5 @@
 import { red500 } from 'material-ui/styles/colors';
 
-
 const styles = {
 	root: {
 		margin: 20

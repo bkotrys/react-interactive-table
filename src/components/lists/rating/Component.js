@@ -6,7 +6,7 @@ import styles from './Styles';
 const RatingList = ({ count }) => {
 	let list = [];
 
-	for(let i=0; i < count; i++){
+	for(let i = 0; i < count; i++){
 		list.push(
 			<li key={ i }>
 				<Icon style={ styles.icon } name="star" />
