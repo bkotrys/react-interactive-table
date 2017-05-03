@@ -8,7 +8,7 @@ import {
   TableHeaderColumn,
 } from 'material-ui/Table';
 
-const CustomTable = ({pets, columnsNames}) => (
+const CustomTable = ({ pets, columnsNames }) => (
   <Table>
     <TableHeader>
       <HeadRow columnsNames={ columnsNames }/>

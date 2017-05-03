@@ -22,19 +22,6 @@ class Filters extends React.Component {
     this.setState({ expanded: toggle });
   }
   render() {
-    const styles = {
-      paper: {
-        padding: "5px 25px",
-        display: "flex"
-      },
-      rightFilters: {
-        display: "flex",
-        flex: "1 1 auto",
-        marginLeft: 25,
-        flexDirection: "column"
-      }
-    };
-
     return (
       <Card expanded={ this.state.expanded } onExpandChange={ this.handleExpandChange }>
         <CardText>
@@ -45,14 +32,14 @@ class Filters extends React.Component {
             label="Filters"
           />
         </CardText>
-        <CardActions expandable={ true }>
-          <Paper zDepth={2} style={ styles.paper } className="filters-wrapper">
+        <CardActions expandable={ true } style={ Filters.styles.cardActions }>
+          <Paper zDepth={ 2 } style={ Filters.styles.paper } className="filters-wrapper">
               <MultipleChoiceFilters
                 label="Animals:"
                 filters={ this.props.filters }
                 onFilter={ this.props.onFilter }
               />
-              <section style={ styles.rightFilters }>
+              <section style={ Filters.styles.rightFilters }>
                 <SliderFilter 
                   label="Price:"
                   minRange={ 0 }
@@ -72,6 +59,22 @@ class Filters extends React.Component {
       </Card>
     ) 
   }
+  static styles = {
+    paper: {
+      padding: "25px 25px 0",
+      display: "flex"
+    },
+    rightFilters: {
+      display: "flex",
+      flex: "1 1 auto",
+      marginLeft: 25,
+      flexDirection: "column"
+    },
+    cardActions: {
+      padding: "0 5px",
+      marginLeft: 5
+    }
+  };
 }
 
 export default Filters
