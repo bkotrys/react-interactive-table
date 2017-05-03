@@ -1,7 +1,10 @@
+import { grey800 } from 'material-ui/styles/colors';
+
 const styles = {
   paper: {
     padding: "20px 15px 10px",
-    display: "flex"
+    display: "flex",
+    background: grey800
   },
   rightFilters: {
     display: "flex",
