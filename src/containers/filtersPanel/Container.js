@@ -1,10 +1,11 @@
 import React from 'react';
-import MultipleChoiceFilters from './multipleChoiceFilters/Filters';
-import SortFilter from './sortFilter/Filter';
-import SliderFilter from './sliderFilter/Filter';
+import MultipleChoiceFilters from './../../components/filters/multipleChoiceFilters/Component';
+import SortFilter from './../../components/filters/sortFilter/Component';
+import SliderFilter from './../../components/filters/sliderFilter/Component';
 import Paper from 'material-ui/Paper';
 import { Card, CardActions, CardText } from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
+import styles from './Styles';
 
 class Filters extends React.Component { 
   constructor(props) {
@@ -32,14 +33,14 @@ class Filters extends React.Component {
             label="Filters"
           />
         </CardText>
-        <CardActions expandable={ true } style={ Filters.styles.cardActions }>
-          <Paper zDepth={ 2 } style={ Filters.styles.paper } className="filters-wrapper">
+        <CardActions expandable={ true } style={ styles.cardActions }>
+          <Paper zDepth={ 2 } style={ styles.paper } className="filters-wrapper">
               <MultipleChoiceFilters
                 label="Animals:"
                 filters={ this.props.filters }
                 onFilter={ this.props.onFilter }
               />
-              <section style={ Filters.styles.rightFilters }>
+              <section style={ styles.rightFilters }>
                 <SliderFilter 
                   label="Price:"
                   minRange={ 0 }
@@ -59,22 +60,6 @@ class Filters extends React.Component {
       </Card>
     ) 
   }
-  static styles = {
-    paper: {
-      padding: "25px 25px 0",
-      display: "flex"
-    },
-    rightFilters: {
-      display: "flex",
-      flex: "1 1 auto",
-      marginLeft: 25,
-      flexDirection: "column"
-    },
-    cardActions: {
-      padding: "0 5px",
-      marginLeft: 5
-    }
-  };
 }
 
 export default Filters

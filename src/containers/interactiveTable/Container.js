@@ -1,8 +1,8 @@
 import React from 'react';
 import { petService } from './../../service';
-import Table from './Table' 
+import Table from './../../components/tables/custom/Component' ;
 import MockPets from './../../mocks';
-import Filters from './../filters/Filters';
+import Filters from './../filtersPanel/Container';
 
 class InteractiveTable extends React.Component {
   constructor(props) {
@@ -16,12 +16,10 @@ class InteractiveTable extends React.Component {
     this.filterByPrice = this.filterByPrice.bind(this);
     this.sortBy = this.sortBy.bind(this);
   }
-
   get columnsNames() {
     const pets = this.props.pets;
     return pets.length ? Object.keys(pets[0]) : [];
   }
-
   get pets() { 
     return this.getPetsIncludedInPrice(
             this.getSortedPets(
@@ -31,36 +29,30 @@ class InteractiveTable extends React.Component {
               )
             );
   }
-
   getInitialFiltersState() {
     return this.props.pets.reduce(function(map, petData) {
         map[petData.animal] = true;
         return map;
     }, {});
   }
-
   getVisiblePets(pets) {
     return pets.filter((pet) => this.state.filters[pet.animal]);
   }
-
   getSortedPets(pets) {
     const isAscending = this.state.sortedBy.endsWith("+"); 
     const sortedBy = this.state.sortedBy.slice(0, -1);
     return pets.sort((a, b) => isAscending ?
       (a[sortedBy] - b[sortedBy]) : (b[sortedBy] - a[sortedBy]));
   }
-
   getPetsIncludedInPrice(pets) {
     return pets.filter((pet) => pet.price <= this.state.price);
   }
-
   componentDidMount() {
     this.setState({
       filters: this.getInitialFiltersState(),
       price: 1000 // should be get from service    
     })
   }
-
   filterByAnimalType(filterName, isChecked) {
     this.setState({
       filters: Object.assign(
@@ -68,15 +60,12 @@ class InteractiveTable extends React.Component {
       )
     })
   }
-
   filterByPrice(currentPrice) {
     this.setState({ price: currentPrice })
   }
-
   sortBy(filterName) {
     this.setState({ sortedBy: filterName })
   }
-  
   render() { 
     return (
       <div>

@@ -3,13 +3,8 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import RatingList from './../../lists/Rating';
-
-const style = {
-	cell: {
-		textAlign: "center"
-	}
-}
+import RatingList from './../../../../lists/rating/Component';
+import styles from './Styles';
 
 const BodyRow = ({ pet }) => {
 	let content = null;
@@ -25,7 +20,7 @@ const BodyRow = ({ pet }) => {
 		        	
 	            return (
 	            	<TableRowColumn 
-	            		style={ style.cell } 
+	            		style={ styles.cell } 
 	            		key={ idx }> 
 	            			{ content }
           			</TableRowColumn>

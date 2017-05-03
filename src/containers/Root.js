@@ -1,5 +1,5 @@
 import React from 'react';
-import InteractiveTable from './../components/tables/InteractiveTable';
+import InteractiveTable from './interactiveTable/Container';
 import MockPets from './../mocks';
 
 import AppBar from 'material-ui/AppBar';

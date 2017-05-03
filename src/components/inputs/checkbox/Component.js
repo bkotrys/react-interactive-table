@@ -1,13 +1,10 @@
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox';
+import styles from './Styles'
 
-const CheckboxFilter = ({ checked, name, onFilterChange }) => {
-  const onChange = (e) => {
-    onFilterChange(name, e.target.checked);
-  };
-
-  const styles = {
-      marginBottom: 16,
+const CheckboxFilter = ({ checked, name, onChange }) => {
+  const handleChange = (e) => {
+    onChange(name, e.target.checked);
   };
 
   return (
@@ -15,7 +12,7 @@ const CheckboxFilter = ({ checked, name, onFilterChange }) => {
         label={ name }
         defaultChecked={ checked }
         style={ styles }
-        onCheck={ onChange }
+        onCheck={ handleChange }
       />
   )
 }

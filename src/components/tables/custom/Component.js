@@ -1,6 +1,6 @@
 import React from 'react';
-import HeadRow from './rows/HeadRow';
-import BodyRow from './rows/BodyRow';
+import HeadRow from './rows/headRow/Component';
+import BodyRow from './rows/bodyRow/Component';
 import {
   Table,
   TableBody,

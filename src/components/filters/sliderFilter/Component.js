@@ -1,21 +1,9 @@
 import React from 'react';
 import Slider from 'material-ui/Slider';
+import styles from './Styles';
 
 const SliderFilter = ({ minRange, maxRange, step=1, onChange, value, label }) => { 
   const handleChange = (e, value) => onChange(value);
-  const styles = {
-    sliderWrapper: {
-      display: "flex",
-      marginTop: 20
-    },
-    sliderRoot: {
-      flex: "1 1 auto",
-      margin: "0 10px"
-    },
-    slider: {
-      margin: "0"
-    }
-  };
   
   return (
     <div>

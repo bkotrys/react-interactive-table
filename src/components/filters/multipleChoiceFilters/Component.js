@@ -1,24 +1,19 @@
 import React from 'react';
-import CheckboxFilter from './CheckboxFilter';
+import Checkbox from './../../inputs/checkbox/Component';
+import styles from './Styles';
 
 const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
-  const styles = {
-    ul: {
-      padding: 5,
-      margin: "10px 0"
-    }
-  };
   return (
     <div className="multiple-choice-filters">
       <span>{ label }</span>
       <ul style={ styles.ul }>
         { 
             Object.keys(filters).map((name, idx) => (
-            <CheckboxFilter 
+            <Checkbox 
               key={ idx }
               name={ name } 
               checked={ filters[name] }
-              onFilterChange={ onFilter }
+              onChange={ onFilter }
             />
           ))
         }
