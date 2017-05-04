@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  TableRow,
-	TableHeaderColumn,
-} from 'material-ui/Table';
+import PropTypes from 'prop-types';
+import { TableRow,TableHeaderColumn } from 'material-ui/Table';
 import styles from './Styles';
 
 const HeadRow = ({ columnsNames }) => (
@@ -18,5 +16,9 @@ const HeadRow = ({ columnsNames }) => (
     }
   </TableRow>
 );
+
+HeadRow.propTypes = {
+  columnsNames: PropTypes.array.isRequired
+};
 
 export default HeadRow;

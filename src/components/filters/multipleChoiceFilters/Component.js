@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from './../../inputs/checkbox/Component';
 import styles from './Styles';
+import PropTypes from 'prop-types';
 
 const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
   return (
@@ -21,5 +22,11 @@ const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
     </div>
   )
 }
+
+MultipleChoiceFilters.propTypes = {
+  filters: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  onFilter: PropTypes.func.isRequired
+};
 
 export default MultipleChoiceFilters;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MultipleChoiceFilters from './../../components/filters/multipleChoiceFilters/Component';
 import SortFilter from './../../components/filters/sortFilter/Component';
 import SliderFilter from './../../components/filters/sliderFilter/Component';
@@ -8,6 +9,15 @@ import Toggle from 'material-ui/Toggle';
 import styles from './Styles';
 
 class Filters extends React.Component { 
+  static propTypes = {
+    filters: PropTypes.object.isRequired,
+    price: PropTypes.number,
+    sortedBy: PropTypes.string.isRequired,
+    onSort: PropTypes.func.isRequired,
+    onFilter: PropTypes.func.isRequired,
+    onPriceFilter: PropTypes.func.isRequired,
+    sortedOptions: PropTypes.array.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {

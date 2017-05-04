@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { petService } from './../../service';
 import Table from './../../components/tables/custom/Component' ;
 import MockPets from './../../mocks';
@@ -6,6 +7,9 @@ import Filters from './../filtersPanel/Container';
 import styles from './Styles';
 
 class InteractiveTable extends React.Component {
+  static propTypes = {
+    pets: PropTypes.array.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -83,7 +87,7 @@ class InteractiveTable extends React.Component {
                 price={ this.state.price }
               />
               <Table 
-                pets={ this.pets } 
+                allData={ this.pets } 
                 columnsNames={ this.columnsNames }
               />
             </div>

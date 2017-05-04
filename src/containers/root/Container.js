@@ -38,17 +38,19 @@ class Root extends React.Component {
   		pets: response,
   		showLoader: false,
   		errorMsg: ""
-  	})
+  	});
   }
   onError(errorMsg) {
   	this.setState({
   		showLoader: false,
   		errorMsg: errorMsg
-  	})
+  	});
   }
 	render() {
 		const showLoader = this.state.showLoader;
 		const isError = !!this.state.errorMsg.length;
+		const showError = isError && !showLoader;
+		const showInteractiveTable = !isError && !showLoader;
 		
 		return (
 			<MuiThemeProvider muiTheme={ getMuiTheme(darkBaseTheme) }>
@@ -63,7 +65,7 @@ class Root extends React.Component {
 							{	showLoader &&
 								(<Loader label="Loading data" />)
 							}
-							{	isError && !showLoader &&
+							{	showError &&
 								(
 									<p style={ styles.errorMsg }>
 										Fetching data failed: { this.state.errorMsg }.
@@ -71,7 +73,7 @@ class Root extends React.Component {
 									</p>
 								)
 							}
-							{	!isError && !showLoader && 
+							{	showInteractiveTable && 
 								(<InteractiveTable pets={ this.state.pets } />)
 							}
 					</section>

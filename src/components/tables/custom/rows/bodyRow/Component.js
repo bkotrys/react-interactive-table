@@ -5,18 +5,19 @@ import {
 } from 'material-ui/Table';
 import RatingList from './../../../../lists/rating/Component';
 import styles from './Styles';
+import PropTypes from 'prop-types';
 
-const BodyRow = ({ pet }) => {
+const BodyRow = ({ data }) => {
 	let content = null;
 	
 	return (
 		<TableRow>
 	    {
-        Object.keys(pet).map((info, idx) => {
+        Object.keys(data).map((info, idx) => {
         	if(info === "rating") {
-        		content = <RatingList count={ pet[info] } />
+        		content = <RatingList count={ data[info] } />
         	} else {
-        		content = pet[info];
+        		content = data[info];
         	}
         	
           return (
@@ -30,6 +31,10 @@ const BodyRow = ({ pet }) => {
 	    }
 		</TableRow>
 	)
-}
+};
+
+BodyRow.propTypes = {
+  data: PropTypes.object.isRequired
+};
 
 export default BodyRow;

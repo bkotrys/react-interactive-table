@@ -1,8 +1,17 @@
 import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import PropTypes from 'prop-types';
 
 class SortFilter extends React.Component {
+  static propTypes = {
+    onSort: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired,
+    value: PropTypes.string
+  };
+  static defaultProps = {
+    value: ""
+  };
   constructor(props) {
     super(props);
     this.state = {

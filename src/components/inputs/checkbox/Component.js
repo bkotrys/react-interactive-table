@@ -1,8 +1,9 @@
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import styles from './Styles'
+import PropTypes from 'prop-types';
 
-const CheckboxFilter = ({ checked, name, onChange }) => {
+const CheckboxInput = ({ name, checked = false, onChange }) => {
   const handleChange = (e) => {
     onChange(name, e.target.checked);
   };
@@ -15,6 +16,12 @@ const CheckboxFilter = ({ checked, name, onChange }) => {
       onCheck={ handleChange }
     />
   )
-}
+};
 
-export default CheckboxFilter;
+CheckboxInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func
+};
+
+export default CheckboxInput;
