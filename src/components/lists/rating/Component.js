@@ -1,5 +1,4 @@
 import React from 'react';
-import { TableRow, TableRowColumn } from 'material-ui/Table';
 import { Icon } from 'react-fa';
 import styles from './Styles';
 import PropTypes from 'prop-types';

@@ -5,8 +5,7 @@ import BodyRow from './rows/bodyRow/Component';
 import {
   Table,
   TableBody,
-  TableHeader,
-  TableHeaderColumn,
+  TableHeader
 } from 'material-ui/Table';
 
 const CustomTable = ({ allData, columnsNames }) => (

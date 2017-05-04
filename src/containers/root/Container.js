@@ -2,7 +2,6 @@ import React from 'react';
 import InteractiveTable from './../interactiveTable/Container';
 import Loader from './../../components/loader/Component';
 import ActionBar from './../../components/bars/actionBar/Component';
-import MockPets from './../../mocks';
 import { petService } from './../../service';
 import styles from './Styles';
 
@@ -51,7 +50,7 @@ class Root extends React.Component {
 		const isError = !!this.state.errorMsg.length;
 		const showError = isError && !showLoader;
 		const showInteractiveTable = !isError && !showLoader;
-		
+
 		return (
 			<MuiThemeProvider muiTheme={ getMuiTheme(darkBaseTheme) }>
 				<div style={ styles.root }>
