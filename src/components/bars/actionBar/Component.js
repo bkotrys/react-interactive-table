@@ -10,8 +10,8 @@ type Props = {
 	actionIcon: string,
 	onChange: Function,
 	actionTooltipText: string,
-	actionTooltipPosition: string,
-	isTouch: boolean
+	actionTooltipPosition?: string,
+	isTouch?: boolean
 };
 
 const ActionBar = ({ 

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import InteractiveTable from './../interactiveTable/Container';
 import Loader from './../../components/loader/Component';
@@ -9,43 +10,45 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-class Root extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pets: [],
-      showLoader: true,
-      errorMsg: ""
-    }
-    this.onRefresh = this.onRefresh.bind(this);
-	}
-	onRefresh() {
-		this.setState({ showLoader: true })
-		this.getData();
-	}
-	getData() {
+type State = {     
+  pets: Array<Object>,
+  showLoader: boolean,
+  errorMsg: string
+}; 
+
+class Root extends React.Component<any, any, State> {
+	state: State = {
+    pets: [],
+    showLoader: true,
+    errorMsg: ""
+  }
+	getData() : void {
   	petService.fetch().then(
 		  this.onSuccess.bind(this),
 		  this.onError.bind(this)
 		);
 	}
-  componentDidMount() {
+  componentDidMount() : void {
   	this.getData();
   }
-  onSuccess(response) {
+  onSuccess(response: Array<Object>) : void {
   	this.setState({ 
   		pets: response,
   		showLoader: false,
   		errorMsg: ""
   	});
   }
-  onError(errorMsg) {
+  onError(errorMsg: string) : void {
   	this.setState({
   		showLoader: false,
   		errorMsg: errorMsg
   	});
   }
-	render() {
+	onRefresh = () : void => {
+		this.setState({ showLoader: true })
+		this.getData();
+	}
+	render() : React$Element<MuiThemeProvider> {
 		const showLoader = this.state.showLoader;
 		const isError = !!this.state.errorMsg.length;
 		const showError = isError && !showLoader;

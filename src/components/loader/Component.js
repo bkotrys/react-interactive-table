@@ -5,7 +5,7 @@ import styles from './Styles';
 
 type Props = { label: string };
 
-const Loader = ({ label="" } : Props) : $JSXIntrinsics => (
+const Loader = ({ label="" } : Props) : React$Element<any> => (
 	<div style={ styles.wrapper }>
 		{ 
 			label.length && (
