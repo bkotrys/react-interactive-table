@@ -1,0 +1,13 @@
+[ignore]
+.*/*.spec.js
+.*/node_modules/jest-enzyme/.*
+.*/node_modules/enzyme-matchers/.*
+.*/node_modules/jsverify/.*
+.*/coverage/.*
+
+[include]
+./node_modules/fbjs/flow/lib
+
+[libs]
+
+[options]

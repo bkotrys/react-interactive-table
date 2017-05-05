@@ -1,9 +1,11 @@
+// @flow
 import React from 'react';
 import { Icon } from 'react-fa';
 import styles from './Styles';
-import PropTypes from 'prop-types';
 
-const RatingList = ({ count = 0 }) => {
+type Props = { count: number };
+
+const RatingList = ({ count = 0 } : Props ) : React$Element<any> => {
 	let list = [];
 
 	for(let i = 0; i < count; i++){
@@ -16,10 +18,6 @@ const RatingList = ({ count = 0 }) => {
 	return (
 		<ul style={ styles.ul }> { list } </ul>
 	)
-};
-
-RatingList.propTypes = {
-	count: PropTypes.number
 };
 
 export default RatingList;

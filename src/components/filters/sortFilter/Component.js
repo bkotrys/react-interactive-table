@@ -1,34 +1,36 @@
+// @flow
 import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import PropTypes from 'prop-types';
 
-class SortFilter extends React.Component {
-  static propTypes = {
-    onSort: PropTypes.func.isRequired,
-    options: PropTypes.array.isRequired,
-    value: PropTypes.string
+type Props = { 
+  onSort:   Function,
+  options:  Array<string>,
+  value:    string
+}
+type State = {     
+  value: string
+}
+
+class SortFilter extends React.Component<any, Props, State> {
+  props: {
+    onSort:   Function,
+    options:  Array<string>,
+    value:    string
   };
-  static defaultProps = {
+  state: State = {
     value: ""
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ""
-    }
-    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event, index, value){
+  handleChange = (event: Object, index: number, value: string): void =>{
     this.setState({ value });
     this.props.onSort(value)
   }
-  componentDidMount() {
+  componentDidMount() : void {
     this.setState({
       value: this.props.value
     })
   }
-  render() {
+  render() : React$Element<SelectField> {
     return (
       <SelectField
         value={ this.state.value } 

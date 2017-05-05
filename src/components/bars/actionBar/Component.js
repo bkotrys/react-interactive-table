@@ -1,9 +1,18 @@
+//@flow
 import React from 'react';
 import styles from './Styles';
 import { Icon } from 'react-fa';
 import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
-import PropTypes from 'prop-types';
+
+type Props = {
+	title: string,
+	actionIcon: string,
+	onChange: Function,
+	actionTooltipText: string,
+	actionTooltipPosition: string,
+	isTouch: boolean
+};
 
 const ActionBar = ({ 
 	title, 
@@ -12,7 +21,7 @@ const ActionBar = ({
 	actionTooltipText, 
 	actionTooltipPosition = "top-center",
 	isTouch = false
-}) => (
+} : Props) : React$Element<AppBar> => (
   <AppBar 
   	title={ title } 
   	iconElementLeft={     
@@ -30,14 +39,5 @@ const ActionBar = ({
 		}
 	/>
 );
-
-ActionBar.PropTypes = {
-	title: PropTypes.string.isRequired,
-	actionIcon: PropTypes.element.isRequired,
-	onChange: PropTypes.func.isRequired,
-	actionTooltipText: PropTypes.string,
-	actionTooltipPosition: PropTypes.string,
-	isTouch: PropTypes.bool
-};
 
 export default ActionBar;

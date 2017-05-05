@@ -1,10 +1,21 @@
+//@flow   
 import React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import styles from './Styles'
-import PropTypes from 'prop-types';
 
-const CheckboxInput = ({ name, checked = false, onChange }) => {
-  const handleChange = (e) => {
+type Props = { 
+  name: string, 
+  checked: boolean, 
+  onChange: Function 
+};
+
+const CheckboxInput = ({ 
+  name, 
+  checked = false, 
+  onChange 
+} : Props ) : React$Element<Checkbox> => { 
+
+  const handleChange = (e: Object) : void => { 
     onChange(name, e.target.checked);
   };
 
@@ -15,13 +26,7 @@ const CheckboxInput = ({ name, checked = false, onChange }) => {
       style={ styles }
       onCheck={ handleChange }
     />
-  )
-};
-
-CheckboxInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  checked: PropTypes.bool,
-  onChange: PropTypes.func
+  );
 };
 
 export default CheckboxInput;

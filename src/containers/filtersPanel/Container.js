@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import MultipleChoiceFilters from './../../components/filters/multipleChoiceFilters/Component';
 import SortFilter from './../../components/filters/sortFilter/Component';
 import SliderFilter from './../../components/filters/sliderFilter/Component';
@@ -8,31 +8,29 @@ import { Card, CardActions, CardText } from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
 import styles from './Styles';
 
-class Filters extends React.Component { 
-  static propTypes = {
-    filters: PropTypes.object.isRequired,
-    price: PropTypes.number,
-    sortedBy: PropTypes.string.isRequired,
-    onSort: PropTypes.func.isRequired,
-    onFilter: PropTypes.func.isRequired,
-    onPriceFilter: PropTypes.func.isRequired,
-    sortedOptions: PropTypes.array.isRequired
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false
-    }
-    this.handleExpandChange = this.handleExpandChange.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
+type Props = {
+  filters: Object,
+  price: number,
+  sortedBy: string,
+  onSort: Function,
+  onFilter: Function,
+  onPriceFilter: Function,
+  sortedOptions: Array<string>
+};
+type State = {     
+  expanded: boolean
+}; 
+class Filters extends React.Component<any, Props, State> { 
+  state: State = {
+    expanded: false
   }
-  handleExpandChange(expanded) {
+  handleExpandChange = (expanded: boolean) => {
     this.setState({ expanded: expanded });
   }
-  handleToggle(event, toggle) {
+  handleToggle = (event: Event, toggle: boolean) => {
     this.setState({ expanded: toggle });
   }
-  render() {
+  render() : React$Element<Card> {
     return (
       <Card expanded={ this.state.expanded } onExpandChange={ this.handleExpandChange }>
         <CardText>

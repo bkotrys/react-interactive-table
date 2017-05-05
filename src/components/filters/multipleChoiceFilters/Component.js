@@ -1,9 +1,19 @@
+// @flow
 import React from 'react';
 import Checkbox from './../../inputs/checkbox/Component';
 import styles from './Styles';
-import PropTypes from 'prop-types';
 
-const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
+type Props = {
+  filters: Object,
+  label: string | number,
+  onFilter: Function
+};
+
+const MultipleChoiceFilters = ({ 
+  filters, 
+  label, 
+  onFilter 
+} : Props) : React$Element<any> => {
   return (
     <div className="multiple-choice-filters">
       <span>{ label }</span>
@@ -22,11 +32,5 @@ const MultipleChoiceFilters = ({ filters, label, onFilter }) => {
     </div>
   )
 }
-
-MultipleChoiceFilters.propTypes = {
-  filters: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
-  onFilter: PropTypes.func.isRequired
-};
 
 export default MultipleChoiceFilters;

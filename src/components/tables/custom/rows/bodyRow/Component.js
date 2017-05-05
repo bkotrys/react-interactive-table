@@ -1,13 +1,12 @@
+// @flow
 import React from 'react';
-import {
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 import RatingList from './../../../../lists/rating/Component';
 import styles from './Styles';
-import PropTypes from 'prop-types';
 
-const BodyRow = ({ data }) => {
+type Props = { data: Object };
+
+const BodyRow = ({ data } : Props) : React$Element<TableRow> => {
 	let content = null;
 	
 	return (
@@ -31,10 +30,6 @@ const BodyRow = ({ data }) => {
 	    }
 		</TableRow>
 	)
-};
-
-BodyRow.propTypes = {
-  data: PropTypes.object.isRequired
 };
 
 export default BodyRow;

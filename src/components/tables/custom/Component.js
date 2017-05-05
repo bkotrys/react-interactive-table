@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import HeadRow from './rows/headRow/Component';
 import BodyRow from './rows/bodyRow/Component';
 import {
@@ -8,7 +8,15 @@ import {
   TableHeader
 } from 'material-ui/Table';
 
-const CustomTable = ({ allData, columnsNames }) => (
+type Props = {
+  allData: Array<Object>,
+  columnsNames: Array<string>
+};
+
+const CustomTable = ({ 
+  allData, 
+  columnsNames 
+} : Props) : React$Element<Table> => (
   <Table>
     <TableHeader>
       <HeadRow columnsNames={ columnsNames }/>
@@ -22,11 +30,6 @@ const CustomTable = ({ allData, columnsNames }) => (
     </TableBody>
   </Table>
 );
-
-CustomTable.propTypes = {
-  allData: PropTypes.array.isRequired,
-  columnsNames: PropTypes.array.isRequired
-};
 
 export default CustomTable
 

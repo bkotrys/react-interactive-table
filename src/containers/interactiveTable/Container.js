@@ -1,23 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Table from './../../components/tables/custom/Component' ;
 import Filters from './../filtersPanel/Container';
 import styles from './Styles';
 
-class InteractiveTable extends React.Component {
-  static propTypes = {
-    pets: PropTypes.array.isRequired
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      filters: {},
-      sortedBy: "",
-      maxPrice: 0
-    }
-    this.filterByAnimalType = this.filterByAnimalType.bind(this);
-    this.filterByPrice = this.filterByPrice.bind(this);
-    this.sortBy = this.sortBy.bind(this);
+type Props = { pets: Array<Object> };
+type State = {     
+  filters: Object,
+  sortedBy: string,
+  maxPrice: number
+}; 
+
+class InteractiveTable extends React.Component<any, Props, State> {
+  state: State = {
+    filters: {},
+    sortedBy: "",
+    maxPrice: 0
   }
   get columnsNames() {
     const pets = this.props.pets;
@@ -56,17 +53,17 @@ class InteractiveTable extends React.Component {
       price: 1000 // should be get from service    
     })
   }
-  filterByAnimalType(filterName, isChecked) {
+  filterByAnimalType = (filterName, isChecked) => {
     this.setState({
       filters: Object.assign(
         {}, this.state.filters, { [filterName]: isChecked }
       )
     })
   }
-  filterByPrice(currentPrice) {
+  filterByPrice = (currentPrice) => {
     this.setState({ price: currentPrice })
   }
-  sortBy(filterName) {
+  sortBy = (filterName) => {
     this.setState({ sortedBy: filterName })
   }
   render() { 

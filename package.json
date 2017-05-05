@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.8.2",
+    "flow-bin": "^0.45.0",
     "jest-enzyme": "^2.1.2",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4"
@@ -15,12 +16,11 @@
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "15.4.2",
     "react-fa": "^4.1.2",
-    "react-tap-event-plugin": "^2.0.1",
-    "sinon": "^2.2.0",
-    "sinon-stub-promise": "^4.0.0"
+    "react-tap-event-plugin": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "flow": "flow"
   }
 }
