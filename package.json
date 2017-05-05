@@ -15,7 +15,9 @@
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "15.4.2",
     "react-fa": "^4.1.2",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "sinon": "^2.2.0",
+    "sinon-stub-promise": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
