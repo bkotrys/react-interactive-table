@@ -1,7 +1,7 @@
 const styles = {
-	cell: {
-		textAlign: "center"
-	}
+    cell: {
+        textAlign: "center"
+    }
 }
 
 export default styles;
