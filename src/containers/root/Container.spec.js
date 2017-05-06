@@ -1,13 +1,13 @@
 import React from 'react';
 import Root from './Container';
+import InteractiveTable from './../interactiveTable/Container';
+import Loader from './../../components/loader/Component';
+import { petService } from './../../service';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import sinonStubPromise from 'sinon-stub-promise';
-import { petService } from './../../service';
 
 sinonStubPromise(sinon);
-
-
 
 describe("Root", () => { 
 	var Container, instance;
@@ -17,9 +17,53 @@ describe("Root", () => {
 		instance = Container.instance();
 	});
 
-	it('renders without crashing', done => {
-	  shallow(<Root />);
-	  done();
+	describe("renders", () => {
+		it('without crashing', done => {
+		  shallow(<Root />);
+		  done();
+		});
+
+		describe("child correctly", () => {
+			const Container = shallow(<Root />);
+			const instance = Container.instance();
+
+			it('when is loaded - renders Loader', done => {
+				instance.setState({ showLoader: true });
+		    expect(Container.contains(<Loader label="Loading data" />)).toBeTruthy();
+				done();
+			});
+
+			it('when is loaded and has error - renders Loader', done => {
+				instance.setState({ 
+					showLoader: true,
+					errorMsg: "Network Error"
+				 });
+		    expect(Container.contains(<Loader label="Loading data" />)).toBeTruthy();
+				done();
+			});
+
+			it('when exist error and loading is finished - renders errors Msg', done => {
+				const Container = shallow(<Root />);
+				const instance = Container.instance();
+				instance.setState({ 
+					showLoader: false ,
+					errorMsg: "Network Errors"
+				});
+
+		    expect(Container.find('p').length).toBe(1);
+				done();
+			});
+
+			it('when has not errors and is not loaded - renders InteractiveTable', done => {
+				instance.setState({ 
+					showLoader: false,
+					errorMsg: "",
+					pets: [{ animal: "lion" }, { animal: "dog"}]
+				 });
+		    expect(Container.find(InteractiveTable).length).toBe(1);
+				done();
+			});
+		});
 	});
 
 	describe("on initialize", () => {
@@ -31,7 +75,6 @@ describe("Root", () => {
 		      showLoader: true,
 		      errorMsg: ""
 		    }); 
-
 		   done();
 		}); 
 	});
