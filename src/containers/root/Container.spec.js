@@ -7,7 +7,7 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import sinonStubPromise from 'sinon-stub-promise';
 
-sinonStubPromise(sinon);
+sinonStubPromise(sinon); 
 
 describe("Root", () => { 
 	var Container, instance;
@@ -43,8 +43,6 @@ describe("Root", () => {
 			});
 
 			it('when exist error and loading is finished - renders errors Msg', done => {
-				const Container = shallow(<Root />);
-				const instance = Container.instance();
 				instance.setState({ 
 					showLoader: false ,
 					errorMsg: "Network Errors"
