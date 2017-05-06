@@ -7,7 +7,7 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import sinonStubPromise from 'sinon-stub-promise';
 
-sinonStubPromise(sinon);  
+sinonStubPromise(sinon);   
 
 describe("Root", () => { 
 	var Container, instance;
