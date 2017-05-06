@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 
 describe('Checkbox component', () => {
 	const muiTheme = getMuiTheme();
-
+ 
 	it('renders without crashing', done => {
 		mount(<CheckboxComponent />, { 
 			context: { muiTheme },
