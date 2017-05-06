@@ -4,4 +4,4 @@ import CheckboxComponent from './Component';
 
 it('renders without crashing', () => {
   shallow(<CheckboxComponent />);
-});
+}); 
