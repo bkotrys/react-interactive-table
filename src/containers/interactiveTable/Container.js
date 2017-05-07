@@ -50,12 +50,6 @@ class InteractiveTable extends React.Component<any, Props, State> {
   getPetsIncludedInPrice(pets: Array<Object>) : Array<Object> {
     return pets.filter((pet) => pet.price <= this.state.price);
   }
-  componentDidMount() : void {
-    this.setState({
-      filters: this.getInitialFiltersState(),
-      price: 1000 // should be get from service    
-    })
-  }
   handleOnAnimalTypeChange = (filterName: string, isChecked: boolean) : void => {
     this.filterByAnimalType(filterName, isChecked);
   }
@@ -77,6 +71,12 @@ class InteractiveTable extends React.Component<any, Props, State> {
   }
   filterByPrice(currentPrice: number) : void {
     this.setState({ price: currentPrice })
+  }
+  componentDidMount() : void {
+    this.setState({
+      filters: this.getInitialFiltersState(),
+      price: 1000 // should be get from service    
+    })
   }
   render() : React$Element<any> { 
     return (
