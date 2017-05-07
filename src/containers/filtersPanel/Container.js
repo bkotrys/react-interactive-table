@@ -13,8 +13,8 @@ type Props = {
   price: number,
   sortedBy: string,
   onSort: Function,
-  onFilter: Function,
-  onPriceFilter: Function,
+  onTypeFilterChange: Function,
+  onPriceFilterChange: Function,
   sortedOptions: Array<string>
 };
 type State = {     
@@ -46,14 +46,14 @@ class Filters extends React.Component<any, Props, State> {
               <MultipleChoiceFilters
                 label="Animals:"
                 filters={ this.props.filters }
-                onFilter={ this.props.onFilter }
+                onFilter={ this.props.onTypeFilterChange }
               />
               <section style={ styles.rightFilters }>
                 <SliderFilter 
                   label="Price:"
                   minRange={ 0 }
                   maxRange={ 1000 }
-                  onChange={ this.props.onPriceFilter }
+                  onChange={ this.props.onPriceFilterChange }
                   value={ this.props.price }
                 />
                 <SortFilter

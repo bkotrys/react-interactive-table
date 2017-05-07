@@ -56,18 +56,27 @@ class InteractiveTable extends React.Component<any, Props, State> {
       price: 1000 // should be get from service    
     })
   }
-  filterByAnimalType = (filterName: string, isChecked: boolean) : void => {
+  handleOnAnimalTypeChange = (filterName: string, isChecked: boolean) : void => {
+    this.filterByAnimalType(filterName, isChecked);
+  }
+  handleOnSortedValueChange = (currentPrice: number) : void => {
+    this.sortBy(currentPrice);
+  }
+  handleOnPriceChange = (filterName: string) : void => {
+    this.filterByPrice(filterName);
+  }
+  filterByAnimalType(filterName: string, isChecked: boolean) : void {
     this.setState({
       filters: Object.assign(
         {}, this.state.filters, { [filterName]: isChecked }
       )
     })
   }
-  filterByPrice = (currentPrice: number) : void => {
-    this.setState({ price: currentPrice })
-  }
-  sortBy = (filterName: string) : void => {
+  sortBy(filterName: string) : void {
     this.setState({ sortedBy: filterName })
+  }
+  filterByPrice(currentPrice: number) : void {
+    this.setState({ price: currentPrice })
   }
   render() : React$Element<any> { 
     return (
@@ -77,11 +86,11 @@ class InteractiveTable extends React.Component<any, Props, State> {
             <div>
               <Filters
                 filters={ this.state.filters }
-                onFilter={ this.filterByAnimalType }
-                onSort={ this.sortBy }
                 sortedOptions={ ["rating", "price"] }
-                sortedBy={ this.state.sortedBy }
-                onPriceFilter={ this.filterByPrice }
+                sortedBy={ this.state.handleOnSortedValueChange }
+                onSort={ this.handleOnSortedValueChange }
+                onTypeFilterChange={ this.handleOnAnimalTypeChange }
+                onPriceFilterChange={ this.handleOnPriceChange }
                 price={ this.state.price }
               />
               <Table 
