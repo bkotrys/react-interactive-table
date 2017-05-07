@@ -21,7 +21,7 @@ class SortFilter extends React.Component<any, Props, State> {
   state: State = {
     value: ""
   }
-  handleChange = (event: Object, index: number, value: string): void =>{
+  handleChange = (event: Object, index: number, value: string): void => {
     this.setState({ value });
     this.props.onSort(value)
   }

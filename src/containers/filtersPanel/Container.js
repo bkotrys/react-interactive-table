@@ -24,10 +24,10 @@ class Filters extends React.Component<any, Props, State> {
   state: State = {
     expanded: false
   }
-  handleExpandChange = (expanded: boolean) => {
+  handleExpandChange = (expanded: boolean) : void => {
     this.setState({ expanded: expanded });
   }
-  handleToggle = (event: Event, toggle: boolean) => {
+  handleToggle = (event: Event, toggle: boolean) : void => {
     this.setState({ expanded: toggle });
   }
   render() : React$Element<Card> {
