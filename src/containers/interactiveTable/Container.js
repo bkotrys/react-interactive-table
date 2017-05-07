@@ -59,11 +59,11 @@ class InteractiveTable extends React.Component<any, Props, State> {
   handleOnAnimalTypeChange = (filterName: string, isChecked: boolean) : void => {
     this.filterByAnimalType(filterName, isChecked);
   }
-  handleOnSortedValueChange = (currentPrice: number) : void => {
-    this.sortBy(currentPrice);
+  handleOnSortedValueChange = (filterName: string) : void => {
+    this.sortBy(filterName);
   }
-  handleOnPriceChange = (filterName: string) : void => {
-    this.filterByPrice(filterName);
+  handleOnPriceChange = (currentPrice: number) : void => {
+    this.filterByPrice(currentPrice);
   }
   filterByAnimalType(filterName: string, isChecked: boolean) : void {
     this.setState({
@@ -87,7 +87,7 @@ class InteractiveTable extends React.Component<any, Props, State> {
               <Filters
                 filters={ this.state.filters }
                 sortedOptions={ ["rating", "price"] }
-                sortedBy={ this.state.handleOnSortedValueChange }
+                sortedBy={ this.state.sortedBy }
                 onSort={ this.handleOnSortedValueChange }
                 onTypeFilterChange={ this.handleOnAnimalTypeChange }
                 onPriceFilterChange={ this.handleOnPriceChange }
